@@ -1,5 +1,4 @@
 package org.example;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,7 +22,7 @@ import java.util.stream.Stream;
 public class Main {
 
 
-   static Logger logger = Logger.getLogger(Main.class.getName());
+    static Logger logger = Logger.getLogger(Main.class.getName());
     private static final String FILENAME = "resources/computer1.csv";
     private static Computer sybernova;
 
@@ -99,37 +98,37 @@ public class Main {
                             (Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                                     peaces[4] , peaces[3] ,
                                     Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
                 case "NexusWave_2":
                     sybernova = new NexusWave(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
                 case "QuantumPulse_3":
                     sybernova = new QuantumPulse(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
                 case "StellarByte_4":
                     sybernova = new StellarByte(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
                 case "VirtuosoSystem_6":
                     sybernova = new VirtuosoSystem(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
                 case "TechMaverick_5":
                     sybernova = new TechMaverick(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO, "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
                     break;
             }
             myList.add(sybernova);
@@ -139,22 +138,20 @@ public class Main {
 //----------------------
 
     public static void main(String[] args) throws FileNotFoundException {
-//        System.setProperty("java.util.logging.config.file",
-//                "resources/logging.properties");
-//        -Djava.util.logging.config.file=resources/logging.properties
 
 
-//        System.setProperty("java.util.logging.config.file",
-//                System.getenv("CONFIG_FILE_PATH"));
+        System.setProperty("java.util.logging.config.file" ,
+                System.getenv("CONFIG_FILE_PATH"));
 
 
-        ArrayList<Long> executionTimes = new ArrayList<>();long t = 0;
+        ArrayList<Long> executionTimes = new ArrayList<>();
+        long t = 0;
         List<Computer> myList = new LinkedList<>();
         long time1 = System.nanoTime();
         long time2 = 0;
 
         time2 = System.nanoTime();
-        t = (time2-time1)/1000000;
+        t = (time2 - time1) / 1000000;
 
         System.out.println("Process lasted " + t + "mc");
         time1 = time2;
@@ -162,7 +159,7 @@ public class Main {
         String[] data = readFileUsingFileReader(FILENAME);
 
         time2 = System.nanoTime();
-        t =  (time2-time1)/1000000;
+        t = (time2 - time1) / 1000000;
         executionTimes.add(t);
         System.out.println("Process readFileUsingFileReader lasted " + t + "mc");
         time1 = time2;
@@ -170,9 +167,9 @@ public class Main {
         myList = createdObject(data);
 
         time2 = System.nanoTime();
-        t =  (time2-time1)/1000000;
+        t = (time2 - time1) / 1000000;
         executionTimes.add(t);
-        System.out.println("Process createdObject(data) lasted " + (time2-time1)/1000000 + "mc");
+        System.out.println("Process createdObject(data) lasted " + (time2 - time1) / 1000000 + "mc");
         time1 = time2;
 
         //Сортировка с условием SortSkip и SortOut.
@@ -198,9 +195,9 @@ public class Main {
                 ("ID: " + key + ", Computer Name: " + value));
 
         time2 = System.nanoTime();
-        t =  (time2-time1)/1000000;
+        t = (time2 - time1) / 1000000;
         executionTimes.add(t);
-        System.out.println("Three acts with the streams lasted " + (time2-time1)/1000000 + "mc");
+        System.out.println("Three acts with the streams lasted " + (time2 - time1) / 1000000 + "mc");
         time1 = time2;
 
         Collections.sort(executionTimes);
@@ -222,15 +219,14 @@ public class Main {
 
             // Разница в миллисекундах
             long differenceInMillis = Math.abs(date2.getTime() - date1.getTime());
-            int differenceInDays = (int)(differenceInMillis/1000/3600/24);
+            int differenceInDays = (int) (differenceInMillis / 1000 / 3600 / 24);
 
             // Вывод результата
-            System.out.println("date1 " + date1 );
-            System.out.println("date2 " + date2 );
-            System.out.println("Разница в миллисекундах: " + differenceInMillis + " Это " + differenceInDays +" дня");
+            System.out.println("date1 " + date1);
+            System.out.println("date2 " + date2);
+            System.out.println("Разница в миллисекундах: " + differenceInMillis + " Это " + differenceInDays + " дня");
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
     }
 }
