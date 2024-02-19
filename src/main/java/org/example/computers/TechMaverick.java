@@ -1,8 +1,9 @@
-package org.example;
+package org.example.computers;
 
-public class VirtuosoSystem extends Computer {
-    public VirtuosoSystem(int id , String brand , String computerName , String computers , String system , String type ,
-                          int hascam) {
+public class TechMaverick extends Computer {
+
+    public TechMaverick(int id , String brand , String computerName , String computers , String system , String type ,
+                        int hascam) {
         super(id , brand , computerName , computers , system , type , hascam);
     }
 
@@ -78,6 +79,6 @@ public class VirtuosoSystem extends Computer {
 
     @Override
     public String toString() {
-        return "метод 'VirtuosoSystem' " + super.toString();
+        return "метод  'TechMaverick' " + super.toString();
     }
 }

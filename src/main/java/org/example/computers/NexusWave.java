@@ -1,4 +1,4 @@
-package org.example;
+package org.example.computers;
 
 public class NexusWave extends Computer {
 

@@ -33,7 +33,7 @@ public class WeatherTest {
         configureFor("localhost" , port);
         stubFor(get(urlEqualTo("/example"))
                 .willReturn(aResponse()
-                        .withStatus(200)
+                        .withStatus(225)
                         .withHeader("Content-Type" , "text/plain")
                         .withBody("Hello, WireMock!")
                         .withFixedDelay(delay)
@@ -63,11 +63,12 @@ public class WeatherTest {
         Request request = new Request.Builder()
                 .url("http://localhost:" + port + "/example") // Укажите URL-адрес вашего GET-запроса
                 .build();
-        try {
+        try (Response response = httpClient.newCall(request).execute())
+        {
             // Отправка запроса и получение ответа
-            Response response = httpClient.newCall(request).execute();
             // Проверка статуса ответа
-            Assert.assertNotEquals(response.code() , 225 , "HTTP запрос не выполнен успешно.");
+            int resp = response.code();
+            Assert.assertEquals(resp, 225 , "HTTP запрос не выполнен успешно: " + resp);
             // Извлечение содержимого ответа
             String stringBody = response.body().string();
         } catch (IOException e) {

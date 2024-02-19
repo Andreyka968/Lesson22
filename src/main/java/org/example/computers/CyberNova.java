@@ -1,6 +1,4 @@
-package org.example;
-
-import org.example.Computer;
+package org.example.computers;
 
 public class CyberNova extends Computer{
     private int id = 0;
