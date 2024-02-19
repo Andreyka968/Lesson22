@@ -1,4 +1,4 @@
-package org.example;
+package org.example.computers;
 
 public abstract class Computer {
     private int id;

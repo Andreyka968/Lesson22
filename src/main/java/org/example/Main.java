@@ -1,4 +1,12 @@
 package org.example;
+import org.example.computers.Computer;
+import org.example.computers.CyberNova;
+import org.example.computers.NexusWave;
+import org.example.computers.QuantumPulse;
+import org.example.computers.StellarByte;
+import org.example.computers.TechMaverick;
+import org.example.computers.VirtuosoSystem;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -22,7 +30,7 @@ import java.util.stream.Stream;
 public class Main {
 
 
-    static Logger logger = Logger.getLogger(Main.class.getName());
+    static Logger logger;
     private static final String FILENAME = "resources/computer1.csv";
     private static Computer sybernova;
 
@@ -98,37 +106,37 @@ public class Main {
                             (Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                                     peaces[4] , peaces[3] ,
                                     Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.SEVERE , "Created syberNova of Class CyberNova: " + sybernova);
                     break;
                 case "NexusWave_2":
                     sybernova = new NexusWave(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.WARNING , "Created syberNova of Class NexusWave_2: " + sybernova);
                     break;
                 case "QuantumPulse_3":
                     sybernova = new QuantumPulse(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.FINE , "Created syberNova of Class QuantumPulse_3: " + sybernova);
                     break;
                 case "StellarByte_4":
                     sybernova = new StellarByte(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.FINER , "Created syberNova of Class StellarByte_4: " + sybernova);
                     break;
                 case "VirtuosoSystem_6":
                     sybernova = new VirtuosoSystem(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.FINEST , "Created syberNova of Class VirtuosoSystem_6: " + sybernova);
                     break;
                 case "TechMaverick_5":
                     sybernova = new TechMaverick(Integer.parseInt(peaces[0]) , peaces[5] , peaces[2] , peaces[1] ,
                             peaces[4] , peaces[3] ,
                             Integer.parseInt(peaces[6]));
-                    logger.log(Level.INFO , "Created syberNova of Class Alabay: " + sybernova);
+                    logger.log(Level.CONFIG , "Created syberNova of Class TechMaverick_5: " + sybernova);
                     break;
             }
             myList.add(sybernova);
@@ -142,7 +150,7 @@ public class Main {
 
         System.setProperty("java.util.logging.config.file" ,
                 System.getenv("CONFIG_FILE_PATH"));
-
+        logger = Logger.getLogger(Main.class.getName());
 
         ArrayList<Long> executionTimes = new ArrayList<>();
         long t = 0;
